@@ -1,0 +1,90 @@
+{
+  "name": "@openmrs/esm-patient-growth-chart-app",
+  "version": "1.0.0",
+  "license": "MPL-2.0",
+  "description": "patient-growth-chart-app frontend module for O3",
+  "browser": "dist/openmrs-esm-patient-growth-chart-app.js",
+  "main": "src/index.ts",
+  "source": true,
+  "scripts": {
+    "start": "openmrs develop",
+    "serve": "webpack serve --mode=development",
+    "debug": "npm run serve",
+    "build": "webpack --mode production --color",
+    "analyze": "webpack --mode=production --env analyze=true",
+    "lint": "cross-env eslint src --ext tsx,ts --fix --max-warnings=0",
+    "test": "cross-env TZ=UTC jest --config jest.config.js --verbose false --passWithNoTests --color",
+    "test:watch": "cross-env TZ=UTC jest --watch --config jest.config.js --color",
+    "coverage": "yarn test --coverage",
+    "typescript": "tsc",
+    "extract-translations": "i18next 'src/**/*.component.tsx' 'src/**/*.modal.tsx' 'src/**/*.extension.tsx' 'src/**/*.workspace.tsx' 'src/**/*.hook.tsx' 'src/index.ts'",
+    "test-e2e": "playwright test"
+  },
+  "keywords": [
+    "openmrs"
+  ],
+  "homepage": "https://github.com/openmrs/esm-patient-growth-chart-app#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openmrs/esm-patient-growth-chart-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/openmrs/esm-patient-growth-chart-app/issues"
+  },
+  "dependencies": {
+    "@carbon/charts": "^1.27.2",
+    "@carbon/charts-react": "^1.27.2",
+    "@carbon/react": "^1.83.0"
+  },
+  "peerDependencies": {
+    "@openmrs/esm-framework": "8.x",
+    "@openmrs/esm-patient-common-lib": "11.x",
+    "dayjs": "1.x",
+    "react": "18.x",
+    "react-i18next": "16.x",
+    "react-router-dom": "6.x",
+    "rxjs": "6.x",
+    "swr": "2.x"
+  },
+  "devDependencies": {
+    "@openmrs/esm-framework": "^8.0.0",
+    "@openmrs/esm-patient-common-lib": "^11.0.0",
+    "@openmrs/webpack-config": "^9.0.0",
+    "@playwright/test": "^1.40.0",
+    "@types/classnames": "^2.3.4",
+    "@types/fhir": "^0.0.41",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@types/semver": "^7",
+    "@types/webpack-env": "^1.18.0",
+    "classnames": "^2.5.1",
+    "cross-env": "^10.1.0",
+    "dayjs": "^1.0.0",
+    "dotenv": "^16.0.0",
+    "i18next": "^25.0.0",
+    "openmrs": "next",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-i18next": "^16.0.0",
+    "react-router-dom": "^6.0.0",
+    "rxjs": "^6.0.0",
+    "semver": "^7.7.4",
+    "single-spa": "^5.0.0",
+    "swr": "^2.0.0",
+    "typescript": "^5.0.0",
+    "webpack": "5.99.9",
+    "webpack-cli": "6.0.1",
+    "webpack-dev-server": "^5.2.1",
+    "zustand": "4.5.7"
+  },
+  "resolutions": {
+    "webpack": "5.99.9",
+    "zustand": "4.5.7"
+  },
+  "packageManager": "yarn@4.10.3"
+}
