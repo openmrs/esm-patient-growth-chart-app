@@ -8,8 +8,9 @@
       "slot": "patient-chart-dashboard-slot",
       "meta": {
         "slot": "patient-chart-growth-dashboard-slot",
-        "path": "Growth Chart"
+        "path": "growth-chart"
       }
+
     },
     {
       "name": "growth-chart-main",

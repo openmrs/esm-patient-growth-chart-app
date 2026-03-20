@@ -1,8 +1,14 @@
-import { type DashboardLinkConfig } from '@openmrs/esm-patient-common-lib';
+import type { DashboardExtensionProps } from '@openmrs/esm-framework';
 
-export const dashboardMeta: DashboardLinkConfig & { slot: string } = {
+export const dashboardMeta: Omit<DashboardExtensionProps, 'basePath'> & {
+  slot: string;
+  columns: number;
+  hideDashboardTitle?: boolean;
+} = {
   slot: 'patient-chart-growth-dashboard-slot',
-  path: 'Growth Chart',
+  columns: 1,
   title: 'Growth Chart',
+  hideDashboardTitle: false,
   icon: 'omrs-icon-activity',
+  path: 'growth-chart',
 };
