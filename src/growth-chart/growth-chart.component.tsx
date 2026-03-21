@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { DataTableSkeleton, Tile } from '@carbon/react';
 import CardHeader from '../components/card-header/CardHeader';
 import EmptyState from '../components/empty-state/EmptyState';
-import { useGrowthChartData, usePatient } from './growth-chart.resource';
 import GrowthChartVisualization from './growth-chart-visualization.component';
+import { useGrowthChartData, usePatient } from './growth-chart.resource';
 import styles from './growth-chart-main.scss';
 
 interface GrowthChartProps {

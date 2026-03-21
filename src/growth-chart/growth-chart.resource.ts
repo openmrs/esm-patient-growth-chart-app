@@ -1,4 +1,4 @@
-import { openmrsFetch, useConfig, age, getPatientName, fhirBaseUrl, type FetchResponse } from '@openmrs/esm-framework';
+import { openmrsFetch, useConfig, fhirBaseUrl, type FetchResponse } from '@openmrs/esm-framework';
 import useSWRImmutable from 'swr/immutable';
 import type { ConfigObject } from '../config-schema';
 

@@ -3,7 +3,7 @@ import { Type } from '@openmrs/esm-framework';
 export const configSchema = {
   concepts: {
     _type: Type.Object,
-    _description: 'Concepts used in the Growth Chart app',
+    _description: 'Concept used to record weight',
     _default: {
       weightUuid: '5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
     },
