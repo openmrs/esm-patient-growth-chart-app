@@ -15,7 +15,11 @@ interface GrowthChartProps {
 
 const GrowthChart: React.FC<GrowthChartProps> = ({ patientUuid, patient: patientProp }) => {
   const { t } = useTranslation();
-  const { patient: fetchedPatient } = usePatient(patientProp ? null : patientUuid);
+  const {
+    patient: fetchedPatient,
+    isLoading: isPatientLoading,
+    isError: isPatientError,
+  } = usePatient(patientProp ? null : patientUuid);
   const patient = patientProp || fetchedPatient;
   const { data, isLoading, isError } = useGrowthChartData(patient);
 
@@ -24,12 +28,20 @@ const GrowthChart: React.FC<GrowthChartProps> = ({ patientUuid, patient: patient
     return birthDate.isValid() ? dayjs().diff(birthDate, 'month', true) : null;
   }, [patient?.birthDate]);
 
-  if (isLoading) {
+  if (isPatientLoading || isLoading) {
     return <DataTableSkeleton />;
   }
 
-  if (isError || !data?.patient) {
+  if (isPatientError) {
+    return <Tile>{t('errorFetchingPatient', 'Unable to fetch patient data')}</Tile>;
+  }
+
+  if (isError) {
     return <Tile>{t('errorLoadingData', 'Error loading growth chart data')}</Tile>;
+  }
+
+  if (!data?.patient) {
+    return <Tile>{t('errorDataUnavailable', 'Patient data not available')}</Tile>;
   }
 
   if (ageInMonths !== null && ageInMonths > 60) {

@@ -38,7 +38,7 @@ export const getPatientSeries = (weights: Observation[], birthDate: dayjs.Dayjs,
   return weights
     .map((obs) => {
       const obsDate = dayjs(obs.effectiveDateTime);
-      if (!obsDate.isValid()) return null;
+      if (!obsDate.isValid() || obs.value == null) return null;
 
       const ageInMonths = obsDate.diff(birthDate, 'month', true);
       if (ageInMonths < 0) return null;
@@ -49,8 +49,8 @@ export const getPatientSeries = (weights: Observation[], birthDate: dayjs.Dayjs,
         value: obs.value,
       };
     })
-    .filter(Boolean)
-    .sort((a, b) => a!.age - b!.age);
+    .filter((item): item is { group: string; age: number; value: number } => item !== null)
+    .sort((a, b) => a.age - b.age);
 };
 
 const getChartData = (patient: fhir.Patient, weights: Observation[], t: TFunction) => {
