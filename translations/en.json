@@ -1,4 +1,7 @@
 {
-  "welcomeToModule": "Welcome to patient-growth-chart!",
-  "getStarted": "Get started by adding routes, extensions, or components."
+  "errorLoadingData": "Error loading growth chart data",
+  "growthChart": "Growth Chart",
+  "growthChartUnavailable": "Growth Chart Unavailable",
+  "patientOlderThanFiveYears": "Growth charts are only available for patients under 5 years of age.",
+  "patientWeight": "Patient Weight"
 }
