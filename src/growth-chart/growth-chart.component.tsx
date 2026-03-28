@@ -2,11 +2,10 @@ import React, { useMemo } from 'react';
 import dayjs from 'dayjs';
 import { useTranslation } from 'react-i18next';
 import { DataTableSkeleton, Tile } from '@carbon/react';
-import CardHeader from '../components/card-header/CardHeader';
-import EmptyState from '../components/empty-state/EmptyState';
 import GrowthChartVisualization from './growth-chart-visualization.component';
 import { useGrowthChartData, usePatient } from './growth-chart.resource';
 import styles from './growth-chart-main.scss';
+import { EmptyCard, CardHeader } from '@openmrs/esm-framework';
 
 interface GrowthChartProps {
   patientUuid: string;
@@ -46,13 +45,7 @@ const GrowthChart: React.FC<GrowthChartProps> = ({ patientUuid, patient: patient
 
   if (ageInMonths !== null && ageInMonths > 60) {
     return (
-      <EmptyState
-        headerTitle={t('growthChartUnavailable', 'Growth Chart Unavailable')}
-        displayText={t(
-          'patientOlderThanFiveYears',
-          'Growth charts are only available for patients under 5 years of age.',
-        )}
-      />
+      <EmptyCard headerTitle={t('growthChart', 'Growth Chart')} displayText={t('growthCharts', 'Growth Charts')} />
     );
   }
 

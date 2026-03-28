@@ -13,7 +13,6 @@
 
 .chartContainer {
   padding: layout.$spacing-05;
-  background: #ffffff;
 
   :global {
     .bx--cc--chart-wrapper {
@@ -46,9 +45,5 @@
 }
 
 .container {
-  padding: layout.$spacing-05;
-}
-
-.visualizationContainer {
-  margin-top: layout.$spacing-05;
+  background-color: #ffffff;
 }
