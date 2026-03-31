@@ -2,10 +2,10 @@ import React, { useMemo } from 'react';
 import dayjs from 'dayjs';
 import { useTranslation } from 'react-i18next';
 import { DataTableSkeleton, Tile, Theme } from '@carbon/react';
+import { EmptyCard, CardHeader } from '@openmrs/esm-framework';
 import GrowthChartVisualization from './growth-chart-visualization.component';
 import { useGrowthChartData } from './growth-chart.resource';
 import styles from './growth-chart-main.scss';
-import { EmptyCard, CardHeader } from '@openmrs/esm-framework';
 
 interface GrowthChartProps {
   patientUuid: string;
