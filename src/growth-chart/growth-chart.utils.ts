@@ -4,7 +4,13 @@ import boysWeightData from '../who-data/boys/weight-for-age.json';
 import girlsWeightData from '../who-data/girls/weight-for-age.json';
 
 export const getReferenceSeries = (gender?: string) => {
-  const whoData = gender?.toLowerCase() === 'female' ? girlsWeightData : boysWeightData;
+  const supportedGender = gender?.toLowerCase();
+  const whoData = supportedGender === 'female' ? girlsWeightData : supportedGender === 'male' ? boysWeightData : null;
+
+  if (!whoData) {
+    return [];
+  }
+
   const referenceSeries = [];
   const percentiles = ['P3', 'P15', 'P50', 'P85', 'P97'];
 
@@ -23,11 +29,11 @@ export const getReferenceSeries = (gender?: string) => {
 
 export const getChartOptions = (t: TFunction) => {
   const referencePalette = {
-    P3: '#ff8389',
-    P15: '#f1c21b',
-    P50: '#42be65',
-    P85: '#f1c21b',
-    P97: '#ff8389',
+    P3: 'var(--cds-support-error)',
+    P15: 'var(--cds-support-warning)',
+    P50: 'var(--cds-support-success)',
+    P85: 'var(--cds-support-warning)',
+    P97: 'var(--cds-support-error)',
   };
 
   return {
@@ -67,7 +73,7 @@ export const getChartOptions = (t: TFunction) => {
     color: {
       scale: {
         ...referencePalette,
-        [t('patientWeight', 'Patient Weight')]: '#000000',
+        [t('patientWeight', 'Patient Weight')]: 'var(--cds-text-primary)',
       },
     },
     grid: {

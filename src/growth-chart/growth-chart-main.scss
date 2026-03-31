@@ -16,12 +16,12 @@
 
   :global {
     .bx--cc--chart-wrapper {
-      background: #f4f4f4;
+      background: var(--cds-layer-01);
     }
 
     .bx--chart-axis.bx--axis--bottom {
       .tick text {
-        fill: #161616;
+        fill: var(--cds-text-primary);
         font-weight: 400;
       }
 
@@ -35,9 +35,8 @@
       stroke-dasharray: 4 2;
     }
 
-    .bx--cc--line path[stroke='#000000'],
-    .bx--cc--line path[style*='stroke: rgb(0, 0, 0)'],
-    .bx--cc--line path[style*='stroke: #000000'] {
+    .bx--cc--line path[stroke='var(--cds-text-primary)'],
+    .bx--cc--line path[style*='stroke: var(--cds-text-primary)'] {
       stroke-width: 3px !important;
       stroke-dasharray: none !important;
     }
@@ -45,5 +44,5 @@
 }
 
 .container {
-  background-color: #ffffff;
+  background-color: var(--cds-background);
 }

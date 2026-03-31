@@ -10,6 +10,6 @@ interface Require {
     directory: string,
     useSubdirectories?: boolean,
     regExp?: RegExp,
-    mode?: 'sync' | 'eager' | 'weak' | 'lazy' | 'lazy-once'
+    mode?: 'sync' | 'eager' | 'weak' | 'lazy' | 'lazy-once',
   ) => any;
 }

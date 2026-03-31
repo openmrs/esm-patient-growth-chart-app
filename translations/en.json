@@ -3,7 +3,6 @@
   "errorFetchingPatient": "Unable to fetch patient data",
   "errorLoadingData": "Error loading growth chart data",
   "growthChart": "Growth Chart",
-  "growthChartUnavailable": "Growth Chart Unavailable",
-  "patientOlderThanFiveYears": "Growth charts are only available for patients under 5 years of age.",
+  "growthCharts": "Growth Charts",
   "patientWeight": "Patient Weight"
 }

@@ -15,23 +15,12 @@ export interface GrowthChartData {
   weights: Observation[];
 }
 
-export function usePatient(patientUuid: string) {
-  const { data, error, isLoading } = useSWRImmutable<FetchResponse<fhir.Patient>, Error>(
-    patientUuid ? `${fhirBaseUrl}/Patient/${patientUuid}` : null,
-    openmrsFetch,
-  );
-
-  return {
-    patient: data?.data,
-    isLoading,
-    isError: error,
-  };
-}
-
 export function useObservations(patientUuid: string, conceptUuid: string) {
+  // Use a high _count (500) to avoid pagination for now.
+  // This should cover most patients, but we can add pagination if needed later.
   const apiUrl =
     patientUuid && conceptUuid
-      ? `${fhirBaseUrl}/Observation?patient=${patientUuid}&code=${conceptUuid}&_sort=-date&_count=100`
+      ? `${fhirBaseUrl}/Observation?patient=${patientUuid}&code=${conceptUuid}&_sort=-date&_count=500`
       : null;
 
   const { data, error, isLoading } = useSWRImmutable<FetchResponse<fhir.Bundle>, Error>(apiUrl, openmrsFetch);
