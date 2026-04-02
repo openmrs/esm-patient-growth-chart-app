@@ -1,0 +1,48 @@
+@use '@carbon/layout';
+@use '@carbon/type';
+
+:global {
+  .bx--cc--tooltip,
+  .cds--cc--tooltip {
+    .bx--cc--tooltip-list li:last-child,
+    .cds--cc--tooltip-list li:last-child {
+      display: none !important;
+    }
+  }
+}
+
+.chartContainer {
+  padding: layout.$spacing-05;
+
+  :global {
+    .bx--cc--chart-wrapper {
+      background: var(--cds-layer-01);
+    }
+
+    .bx--chart-axis.bx--axis--bottom {
+      .tick text {
+        fill: var(--cds-text-primary);
+        font-weight: 400;
+      }
+
+      .tick:nth-child(6n + 1) text {
+        font-weight: 600;
+      }
+    }
+
+    .bx--cc--line path {
+      stroke-width: 1px;
+      stroke-dasharray: 4 2;
+    }
+
+    .bx--cc--line path[stroke='var(--cds-text-primary)'],
+    .bx--cc--line path[style*='stroke: var(--cds-text-primary)'] {
+      stroke-width: 3px !important;
+      stroke-dasharray: none !important;
+    }
+  }
+}
+
+.container {
+  background-color: var(--cds-background);
+}

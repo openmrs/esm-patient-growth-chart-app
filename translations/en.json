@@ -1,0 +1,7 @@
+{
+  "errorDataUnavailable": "Patient data not available",
+  "errorLoadingData": "Error loading growth chart data",
+  "growthChart": "Growth Chart",
+  "growthCharts": "Growth Charts",
+  "patientWeight": "Patient Weight"
+}
