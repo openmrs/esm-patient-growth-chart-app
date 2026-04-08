@@ -9,6 +9,6 @@ export const dashboardMeta: Omit<DashboardExtensionProps, 'basePath'> & {
   columns: 1,
   title: 'Growth Chart',
   hideDashboardTitle: false,
-  icon: 'omrs-icon-activity',
+  icon: 'omrs-icon-chart-line',
   path: 'growth-chart',
 };
