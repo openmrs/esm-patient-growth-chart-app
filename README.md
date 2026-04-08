@@ -1,4 +1,4 @@
-# @openmrs/esm-patient-growth-chart
+# OpenMRS Growth Chart
 
 ## Description
 
@@ -34,13 +34,98 @@ The Growth Chart is designed for the OpenMRS 3.x Patient Chart. Its primary purp
 
 ## Quick start
 
-\`\`\`bash
+```bash
 yarn install
 yarn start
-\`\`\`
+```
 
 Once started, your module will be available at:
 **http://localhost:8080/openmrs/spa/**
+
+## Running unit and integration tests
+
+To run unit and integration tests, run:
+
+```bash
+yarn turbo run test
+```
+
+To run tests in `watch` mode, run:
+
+```bash
+yarn turbo run test:watch
+```
+
+To generate a `coverage` report, run:
+
+```bash
+yarn turbo run coverage
+```
+
+By default, `turbo` will cache test runs. This means that re-running tests wihout changing any of the related files will return the cached logs from the last run. To bypass the cache, run tests with the `force` flag, as follows:
+
+```bash
+yarn turbo run test --force
+```
+
+## Running End-to-End (E2E) tests
+
+Before running the E2E tests, you need to set up the test environment. Install Playwright browsers and setup the default test environment variables by running the following commands:
+
+```bash
+npx playwright install
+cp example.env .env
+```
+
+By default, tests run against a local backend at http://localhost:8080/openmrs. To test local changes, make sure your dev server is running before executing tests.
+
+```bash
+yarn start
+```
+
+To test against a remote instance (such as the OpenMRS refapp hosted on dev3.openmrs.org, update the E2E_BASE_URL environment variable in your .env file:
+
+```
+E2E_BASE_URL=https://dev3.openmrs.org/openmrs
+```
+
+To run E2E tests:
+
+```bash
+yarn test-e2e
+```
+
+This will run all the E2E tests (files in the e2e directory with the \*.spec.ts extension) in headless mode. That means no browser UI will be visible.
+
+To run tests in headed mode (shows the browser while tests run) use:
+
+```bash
+yarn test-e2e --headed
+```
+
+To run tests in Playwright's UI mode (interactive debugger), use:
+
+```bash
+yarn test-e2e --ui
+```
+
+You'll most often want to run tests in both headed and UI mode:
+
+```bash
+yarn test-e2e --headed --ui
+```
+
+To run a specific test file:
+
+```bash
+yarn test-e2e <test-name>
+```
+
+Read the [e2e testing guide](https://openmrs.atlassian.net/wiki/x/K4L-C) to learn more about End-to-End tests in this project.
+
+### Updating Playwright
+
+The Playwright version in the [Bamboo e2e Dockerfile](e2e/support/bamboo/playwright.Dockerfile#L2) and the `package.json` file must match. If you update the Playwright version in one place, you must update it in the other.
 
 ## What's included
 
@@ -77,64 +162,23 @@ Once started, your module will be available at:
 
 See the [Routing Guide](https://o3-docs.openmrs.org/docs/frontend-modules/routing) for details.
 
-### Development commands
-
-\`\`\`bash
-
-# Start development server
-
-yarn start
-
-# Build for production
-
-yarn build
-
-# Run tests
-
-yarn test
-
-# Watch tests
-
-yarn test:watch
-
-# Extract translations
-
-yarn extract-translations
-
-# Type checking
-
-yarn typescript
-
-# Linting
-
-yarn lint
-
-# Format code
-
-yarn prettier
-\`\`\`
-
 ## Installation
 
-\`\`\`bash
+```bash
 yarn add @openmrs/esm-patient-growth-chart
-\`\`\`
-
-## Usage
-
-[Add usage instructions here]
+```
 
 ## Building
 
-\`\`\`bash
+```bash
 yarn build
-\`\`\`
+```
 
 ## Testing
 
-\`\`\`bash
+```bash
 yarn test
-\`\`\`
+```
 
 ## Troubleshooting
 
@@ -143,18 +187,20 @@ yarn test
 Ensure your build config exports the default OpenMRS config:
 
 For rspack (default):
-\`\`\`js
+
+```js
 const config = require('@openmrs/rspack-config');
 
 module.exports = config.default ?? config;
-\`\`\`
+```
 
 For webpack:
-\`\`\`js
+
+```js
 const config = require('@openmrs/webpack-config');
 
 module.exports = config.default ?? config;
-\`\`\`
+```
 
 ### Yarn peer dependency warnings (dayjs, i18next, single-spa, swr, react-is, sass)
 
